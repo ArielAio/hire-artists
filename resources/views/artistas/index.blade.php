@@ -16,12 +16,13 @@
     }
 </style>
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-sm-10">
+    <div class="row mb-3">
+        <div class="col">
             <h1>Listagem de Artistas</h1>
         </div>
-        <div class="col-sm-2">
-            <a href="{{ route('artistas.create') }}" class="btn btn-success">Novo Artista</a>
+        <div class="col-auto d-flex align-items-center">
+            <a href="{{ route('artistas.create') }}" class="btn btn-outline-primary me-3">Novo Artista</a>
+            <a href="{{ route('artistas.lista') }}" class="btn btn-outline-primary">Contratados</a>
         </div>
     </div>
     <div class="row mb-3">
@@ -80,5 +81,6 @@
             });
         });
     });
+    
 </script>
 @endsection

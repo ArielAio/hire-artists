@@ -4,25 +4,24 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1>Adicionar Novo Artista</h1>
-    <hr>
-    <form action="{{ route('artistas.store') }}" method="POST">
-        @csrf
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group mb-3"> <!-- Adicionando margem na parte inferior -->
-                    <label for="nome">Nome do Artista:</label>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center mb-4">Adicionar Novo Artista</h1>
+            <form action="{{ route('artistas.store') }}" method="POST">
+                @csrf
+                <div class="form-group mb-4"> <!-- Adicionando margem na parte inferior -->
+                    <label for="nome" class="form-label">Nome do Artista:</label>
                     <input type="text" class="form-control" name="nome" placeholder="Digite o nome do artista">
                 </div>
                 <div class="form-group mb-4"> <!-- Adicionando margem na parte inferior -->
-                    <label for="categoria">Categoria:</label>
+                    <label for="categoria" class="form-label">Categoria:</label>
                     <input type="text" class="form-control" name="categoria" placeholder="Digite a categoria do artista">
                 </div>
-                <div class="form-group"> <!-- Botão de cadastro separado -->
+                <div class="form-group text-center"> <!-- Botão de cadastro centralizado -->
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 @endsection
