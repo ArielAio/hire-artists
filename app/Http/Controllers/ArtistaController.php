@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ArtistaController extends Controller
 {
+
+    public function welcome(){
+        return view('artistas.welcome');
+    }
+
     public function index()
     {
         $artistas = Artista::all();

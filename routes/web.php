@@ -3,6 +3,8 @@
 use App\Http\Controllers\ArtistaController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', [ArtistaController::class, 'welcome'])->name('artistas.welcome');
+
 Route::prefix('artistas')->group(function () {
     Route::get('/', [ArtistaController::class, 'index'])->name('artistas.index');
     Route::get('/create', [ArtistaController::class, 'create'])->name('artistas.create');
