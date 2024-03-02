@@ -4,6 +4,8 @@ Este é um guia rápido para configurar e executar este projeto localmente.
 
 ## Configuração inicial
 
+Certifique-se de ter o PHP, Composer e Docker instalados na sua máquina.
+
 1. **Criar arquivo `.env`:** 
    - Copie o arquivo `.env.example` e crie um novo arquivo chamado `.env`.
    - Preencha as variáveis de ambiente no arquivo `.env` com as informações necessárias.
