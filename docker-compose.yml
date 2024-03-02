@@ -1,21 +1,22 @@
-version: '3'
+version: '3'  # Specifies the version of the Docker Compose file format being used.
 
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/var/www/html
-    depends_on:
-      - db
+services:  # Defines the services that compose the application.
 
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-    ports:
-      - "1024:3306"
+  app:  # Defines the 'app' service.
+    build:  # Specifies how to build the Docker image for the 'app' service.
+      context: .  # Specifies the build context directory.
+      dockerfile: Dockerfile  # Specifies the Dockerfile to use for building the image.
+    ports:  # Specifies port mappings for the 'app' service.
+      - "8000:8000"  # Maps port 8000 of the host to port 8000 of the container.
+    volumes:  # Mounts volumes for the 'app' service.
+      - .:/var/www/html  # Mounts the current directory on the host to /var/www/html in the container.
+    depends_on:  # Specifies service dependencies.
+      - db  # Indicates that the 'app' service depends on the 'db' service.
+
+  db:  # Defines the 'db' service.
+    image: mysql:5.7  # Specifies the Docker image to use for the 'db' service.
+    environment:  # Specifies environment variables for the 'db' service.
+      MYSQL_ROOT_PASSWORD: root  # Sets the root password for MySQL.
+      MYSQL_DATABASE: laravel  # Specifies the name of the MySQL database.
+    ports:  # Specifies port mappings for the 'db' service.
+      - "1024:3306"  # Maps port 1024 of the host to port 3306 of the container.

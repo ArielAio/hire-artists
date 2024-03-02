@@ -9,33 +9,39 @@ use Illuminate\Http\Request;
 class ArtistaController extends Controller
 {
 
+    // Displays the welcome view
     public function welcome(){
         return view('artistas.welcome');
     }
 
+    // Displays the list of artists
     public function index()
     {
         $artistas = Artista::all();
-        // dd($artista);
         return view('artistas.index', ['artistas' => $artistas]);
     }
+
+    // Displays the form to create a new artist
     public function create()
     {
        return view('artistas.create');
     }
+
+    // Stores the newly created artist data
     public function store(Request $request)
-{
-    // Valide os dados do formulário
-    $validatedData = $request->validate([
-        'nome' => 'required',
-        'categoria' => 'required',
-    ]);
+    {
+        // Validate form data
+        $validatedData = $request->validate([
+            'nome' => 'required',
+            'categoria' => 'required',
+        ]);
 
-    $artista = Artista::create($validatedData);
+        $artista = Artista::create($validatedData);
 
-    return redirect()->route('artistas.index');
-}
+        return redirect()->route('artistas.index');
+    }
 
+    // Displays the form to edit an artist
     public function edit($id)
     {
         $artistas = Artista::where('id', $id)->first();
@@ -47,6 +53,8 @@ class ArtistaController extends Controller
             return redirect()->route('artistas.index');
         }
     }
+
+    // Updates the artist data
     public function update(Request $request, $id)
     {
         $data = [
@@ -56,12 +64,15 @@ class ArtistaController extends Controller
         Artista::where('id',$id)->update($data);
         return redirect()->route('artistas.index');
     }
+
+    // Deletes an artist
     public function destroy($id)
     {
         Artista::where('id',$id)->delete();
         return redirect()->route('artistas.index');
     }
 
+    // Searches for artists
     public function search(Request $request)
     {
         $searchTerm = $request->input('q');
@@ -71,27 +82,28 @@ class ArtistaController extends Controller
         return view('artistas.index', compact('artistas'));
     }
 
-
+    // Displays the form to hire an artist
     public function contratar($id)
     {
         $artista = Artista::findOrFail($id);
         return view('contratacao.contratar', compact('artista'));
     }
 
+    // Stores the data of the hired artist
     public function cadastro(Request $request)
     {
-    // Valide os dados do formulário
-    $validatedData = $request->validate([
-        'artista_id' => 'required|exists:artistas,id',
-        'nome_artista' => 'required',
-        'categoria_artista' => 'required',
-        'nome_contratante' => 'required',
-        'cache' => 'required',
-        'data_evento' => 'required|date',
-        'endereco' => 'required',
-    ]);
+        // Validate form data
+        $validatedData = $request->validate([
+            'artista_id' => 'required|exists:artistas,id',
+            'nome_artista' => 'required',
+            'categoria_artista' => 'required',
+            'nome_contratante' => 'required',
+            'cache' => 'required',
+            'data_evento' => 'required|date',
+            'endereco' => 'required',
+        ]);
 
-
+        // Create new entry for the hired artist
         Contratado::create([
             'artista_id' => $validatedData['artista_id'],
             'nome_artista' => $validatedData['nome_artista'],
@@ -102,8 +114,9 @@ class ArtistaController extends Controller
             'endereco' => $validatedData['endereco'],
         ]);
         return view('contratacao.aviso');
-}
+    }
 
+    // Displays the list of hired artists
     public function lista(){
         $contratados = Contratado::all();
         return view('contratacao.lista', ['contratados' => $contratados]);

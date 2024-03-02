@@ -2,20 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents; // Importing WithoutModelEvents class
+use Illuminate\Database\Seeder; // Importing Seeder class
+use Illuminate\Support\Facades\DB; // Importing DB facade
 
-class ArtistasSeeder extends Seeder
+class ArtistasSeeder extends Seeder // Defining ArtistasSeeder class
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run() // Method to run the database seeds
     {
-        // Defina os artistas de sua preferência
+        // Define your preferred artists
         $artistas = [
             ['nome' => 'Jão', 'categoria' => 'Pop'],
             ['nome' => 'MC Hariel', 'categoria' => 'Funk'],
@@ -50,7 +50,7 @@ class ArtistasSeeder extends Seeder
             ['nome' => 'Nirvana', 'categoria' => 'Grunge'],
         ];
 
-        // Insira os artistas na tabela 'artistas'
+        // Insert the artists into the 'artistas' table
         foreach ($artistas as $artista) {
             DB::table('artistas')->insert($artista);
         }
