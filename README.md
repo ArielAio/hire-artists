@@ -2,9 +2,11 @@
 
 Este é um guia rápido para configurar e executar este projeto localmente.
 
+Certifique-se de ter o PHP, Composer e Docker instalados na sua máquina.
+
 ## Configuração inicial
 
-Certifique-se de ter o PHP, Composer e Docker instalados na sua máquina.
+Entre no diretório "hire-artists" pelo seu editor de código.
 
 1. **Criar arquivo `.env`:** 
    - Copie o arquivo `.env.example` e crie um novo arquivo chamado `.env`.
