@@ -24,7 +24,7 @@ docker-compose up -d
 ## Configuração do banco de dados
 
 5. **Criar migrações:**
-php artisan make:migration create_artistas_table
+php artisan make:migration create_artistas_table <br>
 php artisan make:migration create_contratados_table
 
 6. **Executar migrações:**
